@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+
   def index
   end
 
@@ -34,6 +35,10 @@ class CustomersController < ApplicationController
   end
 
   def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+    # _urlをつけるとそのアクションに飛べる
+    redirect_to customers_url
   end
 
   private
