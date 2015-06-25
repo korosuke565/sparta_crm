@@ -22,6 +22,12 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :image_url, "プロフィール画像" %><br />
+        <%= f.text_field :image_url, class:"form-control" %>
+      </div>
+
+
+      <div class="form-group">
         <%= f.label :password, "パスワード" %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>

@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: customers
+#
+#  id          :integer          not null, primary key
+#  family_name :string           not null
+#  given_name  :string           not null
+#  email       :string           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  company_id  :integer
+#
+# Indexes
+#
+#  index_customers_on_company_id  (company_id)
+#  index_customers_on_email       (email) UNIQUE
+#
+
 class Customer < ActiveRecord::Base
   validates :family_name,
     presence: true, length: { maximum: 20 }
@@ -11,6 +29,7 @@ class Customer < ActiveRecord::Base
     presence: true
 
   belongs_to :company
+  has_many :comments
 
   def full_name
     full_name = family_name + given_name
